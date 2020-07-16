@@ -7,13 +7,13 @@ namespace AsyncAwait
     {
         static void Main(string[] args)
         {
-            SumTwoOperationsAsync().GetAwaiter().GetResult();
+            Console.WriteLine(SumTwoOperationsAsync().GetAwaiter().GetResult());
         }
 
         public static async Task<int> SumTwoOperationsAsync()
         {
             var firstTask = GetOperationOneAsync();
-            var secondTask = GetOperationTwoAsync();
+            var secondTask = GetOperationTwoAsync(); //This task waits for the other task to complete. A log can be beneficial.
             return await firstTask + await secondTask;
         }
 
